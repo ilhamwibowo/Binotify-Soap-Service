@@ -1,1 +1,5 @@
-soapservice\App.class
+soapservice\services\CheckStatusImpl.class
+soapservice\services\Security.class
+soapservice\services\App.class
+soapservice\services\DBHandler.class
+soapservice\services\CheckStatus.class
