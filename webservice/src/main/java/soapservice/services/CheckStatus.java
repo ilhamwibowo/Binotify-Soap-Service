@@ -8,14 +8,15 @@ import javax.jws.soap.SOAPBinding.Style;
 @WebService
 @SOAPBinding(style = Style.DOCUMENT)
 // public class checkStatus {
-//     @WebMethod
+//     @WebMeth: " + status;
+//     }od
 //     public String checkStatus(String status) {
-//         return "Status: " + status;
-//     }
+//         return "Status
 // }
 
 public interface CheckStatus {
     @WebMethod
-    public String CheckStatus(String status);
+    public String CheckStatus();
+    public String HelloWorld(String name);
 }
 

@@ -3,9 +3,9 @@ import java.sql.*;
 
 public class DBHandler {
     private Connection connection; //masih ngikutin referensi
-    private static String DB_URL = "mysql://localhost:3306/binotify"; // ini belum tau harusnya apa
-    private static String DB_Username = "";
-    private static String DB_Password = "";
+    private static String DB_URL = "jdbc:mysql://localhost/test"; // ini belum tau harusnya apa
+    private static String DB_Username = "root";
+    private static String DB_Password = "bismillah99";
 
     public DBHandler(){ 
         try{
