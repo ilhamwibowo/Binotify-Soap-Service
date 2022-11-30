@@ -3,9 +3,9 @@ import java.sql.*;
 
 public class DBHandler {
     private Connection connection; //masih ngikutin referensi
-    private static String DB_URL = "jdbc:mysql://localhost/test"; // ini belum tau harusnya apa
+    private static String DB_URL = "jdbc:mysql://localhost/soapdb"; // ini belum tau harusnya apa
     private static String DB_Username = "root";
-    private static String DB_Password = "bismillah99";
+    private static String DB_Password = "mantapjiwa";
 
     public DBHandler(){ 
         try{
