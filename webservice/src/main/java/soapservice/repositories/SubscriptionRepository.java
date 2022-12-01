@@ -135,4 +135,33 @@ public class SubscriptionRepository {
             throw new RuntimeException("[Repository] Subscription SQL get by id error", e);
         }
     }
+
+    public List<Subscription> getSubscriptionByStatus(String status) {
+        String query = "SELECT * FROM subscription WHERE status = ?";
+
+        DBHandler database = new DBHandler();
+
+        try (Connection conn = database.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, status);
+
+            ResultSet result = stmt.executeQuery();
+            List<Subscription> subs = new ArrayList<>();
+
+            if (result.next()) {
+                Subscription sub = new Subscription();
+
+                sub.setCreator_id(result.getInt("creator_id"));
+                sub.setSubscriber_id(result.getInt("Subscriber_id"));
+                sub.setStatus(result.getString("status"));
+
+                subs.add(sub);
+            }
+
+            return subs;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Subscription Get error", e);
+        }
+    }
 }
