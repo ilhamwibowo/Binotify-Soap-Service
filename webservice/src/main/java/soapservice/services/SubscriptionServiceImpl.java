@@ -28,18 +28,23 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @WebMethod
     public List<Subscription> getAllSubscription() {
         long currenttime = System.currentTimeMillis();
-        System.out.println("HORE");
         add_log("Mengambil seluruh data subscription", "http://localhost:3000/9999/subscription", currenttime);
         return subscriptionRepositoryImpl.getAllSubscription();
     }
 
     @WebMethod
     public Subscription getSubscription(int creator_id, int subscriber_id) {
+        long currenttime = System.currentTimeMillis();
+        String desc = "Mengambil data subscription creator_id : " + creator_id + ", subscriber id : " +subscriber_id ;
+        add_log(desc, "http://localhost:3000/9999/subscription", currenttime);
         return subscriptionRepositoryImpl.getSubscription(creator_id, subscriber_id);
     }
     
     @WebMethod
     public String updateSubscription(int creator_id, int subscriber_id, String status) {
+        long currenttime = System.currentTimeMillis();
+        String desc = "Mengubah status subscription creator_id : " + creator_id + ", subscriber id : " +subscriber_id + ", menjadi " + status;
+        add_log(desc, "http://localhost:3000/9999/subscription", currenttime);
         Subscription sub = new Subscription(creator_id, subscriber_id, status);
         subscriptionRepositoryImpl.updateSubscription(sub);
         return "hore";
@@ -47,6 +52,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @WebMethod
     public boolean addSubscription(int creator_id, int subscriber_id, String status) {
+        long currenttime = System.currentTimeMillis();
+        String desc = "Menambah data subscription creator_id : " + creator_id + ", subscriber id : " +subscriber_id ;
+        add_log(desc, "http://localhost:3000/9999/subscription", currenttime);
         Subscription sub = new Subscription(creator_id, subscriber_id, status);
         return subscriptionRepositoryImpl.addSubscription(sub);
     }

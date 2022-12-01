@@ -15,7 +15,6 @@ public class LogRepository {
         try (Connection conn = database.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, log.get_description());
-            System.out.print(log.get_ip());
             stmt.setString(2, log.get_ip());
             stmt.setString(3, log.get_endpoint());
             stmt.setTimestamp(4, log.get_requesttime());
