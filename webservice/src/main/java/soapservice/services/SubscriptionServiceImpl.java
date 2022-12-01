@@ -58,6 +58,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         Subscription sub = new Subscription(creator_id, subscriber_id, status);
         return subscriptionRepositoryImpl.addSubscription(sub);
     }
+    
+    @WebMethod
+    public String checkStatus(int creator_id, int subscriber_id) {
+        return subscriptionRepositoryImpl.checkStatus(creator_id, subscriber_id);
+    }
+
+    @WebMethod
+    public List<Subscription> getSubscriptionByStatus(String status) {
+        return subscriptionRepositoryImpl.getSubscriptionByStatus(status);
+    }
 
     private String get_client_ip() {
         // System.out.println("1");
@@ -72,10 +82,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return "0.0.0.0";
     }
 
-    @WebMethod
-    public String checkStatus(int creator_id, int subscriber_id) {
-        return subscriptionRepositoryImpl.checkStatus(creator_id, subscriber_id);
-    }
     // @WebMethod
     // private String get_client_ip() {
     //     System.out.println("1");
@@ -100,5 +106,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
         logRepository.insert_log(log);
     }
+
 
 }
