@@ -19,4 +19,8 @@ public interface SubscriptionService {
 
     @WebMethod
     boolean addSubscription(Subscription subscription);
+
+    @WebMethod
+    List<Subscription> getSubscriptionByStatus(String status);
+
 }
