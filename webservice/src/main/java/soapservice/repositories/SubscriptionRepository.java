@@ -100,36 +100,39 @@ public class SubscriptionRepository {
         } catch (SQLException e) {
             return false;
         }
-
         return true;
     }
 
-    public List<Subscription> getSubscriptionByStatus(String status) {
-        String query = "SELECT * FROM subscription WHERE status = ?";
+
+    public String checkStatus(int creator_id, int subscriber_id){
+        String query = "SELECT status FROM subscription WHERE creator_id = ? AND subscriber_id = ?";
 
         DBHandler database = new DBHandler();
 
         try (Connection conn = database.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, creator_id);
+            stmt.setInt(2, subscriber_id);
 
-            stmt.setString(1, status);
-            
             ResultSet result = stmt.executeQuery();
-            List<Subscription> subs = new ArrayList<>();
+            String status = null;
 
-            while (result.next()) {
-                Subscription sub = new Subscription();
-
-                sub.setCreator_id(result.getInt("creator_id"));
-                sub.setCreator_id(result.getInt("creator_id"));
-
-                subs.add(sub);
+            if (result.next()) {
+                status = result.getString("status");
             }
 
-            return subs;
+            if (status == null) {
+                return "No Subscription made of this creator and subscriber";
+            } else {
+                if (status.equals("ACCEPTED")) {
+                    return "Status Validated : (Subscribed)";
+                } else {
+                    return "Status Unvalid (Not subscribed) ";
+                }
+            }
 
         } catch (SQLException e) {
-            throw new RuntimeException("Subscription Get by Status error", e);
+            throw new RuntimeException("[Repository] Subscription SQL get by id error", e);
         }
     }
 }
