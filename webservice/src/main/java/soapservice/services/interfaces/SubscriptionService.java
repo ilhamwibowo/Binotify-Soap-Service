@@ -15,8 +15,8 @@ public interface SubscriptionService {
     Subscription getSubscription(int creator_id, int subscriber_id);
     
     @WebMethod
-    void updateSubscription(Subscription subscription);
+    String updateSubscription(int creator_id, int subscriber_id, String status);
 
     @WebMethod
-    boolean addSubscription(Subscription subscription);
+    boolean addSubscription(int creator_id, int subscriber_id, String status);
 }

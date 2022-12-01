@@ -39,13 +39,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
     
     @WebMethod
-    public void updateSubscription(Subscription subscription) {
-        subscriptionRepositoryImpl.updateSubscription(subscription);
+    public String updateSubscription(int creator_id, int subscriber_id, String status) {
+        Subscription sub = new Subscription(creator_id, subscriber_id, status);
+        subscriptionRepositoryImpl.updateSubscription(sub);
+        return "hore";
     }
 
     @WebMethod
-    public boolean addSubscription(Subscription subscription) {
-        return subscriptionRepositoryImpl.addSubscription(subscription);
+    public boolean addSubscription(int creator_id, int subscriber_id, String status) {
+        Subscription sub = new Subscription(creator_id, subscriber_id, status);
+        return subscriptionRepositoryImpl.addSubscription(sub);
     }
 
     private String get_client_ip() {
