@@ -1,12 +1,15 @@
 package soapservice.services;
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 import soapservice.configs.*;
+import soapservice.services.interfaces.CheckStatus;
+
 import java.sql.*;
 
-@WebService(endpointInterface = "soapservice.services.CheckStatus")
+@WebService(endpointInterface = "soapservice.services.interfaces.CheckStatus")
 public class CheckStatusImpl implements CheckStatus {
 
-    @Override
+    @WebMethod
     public String CheckStatusDB() {
         try{
             DBHandler handler = new DBHandler();
@@ -23,7 +26,7 @@ public class CheckStatusImpl implements CheckStatus {
         }
     }
 
-    @Override
+    @WebMethod
     public String HelloWorld(String name) {
         return "Hello " + name;
     }
