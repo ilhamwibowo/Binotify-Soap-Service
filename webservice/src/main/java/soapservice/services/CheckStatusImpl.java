@@ -15,7 +15,7 @@ public class CheckStatusImpl implements CheckStatus {
             DBHandler handler = new DBHandler();
             Connection conn = handler.getConnection();
             Statement statement = conn.createStatement();
-            String sql = "SELECT * FROM subcription;";
+            String sql = "SELECT * FROM subscription;";
             // int count = statement.executeUpdate(sql);
             ResultSet res = statement.executeQuery(sql);
             res.next();
