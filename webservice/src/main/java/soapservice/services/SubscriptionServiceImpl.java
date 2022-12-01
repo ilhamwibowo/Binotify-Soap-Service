@@ -64,6 +64,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return "0.0.0.0";
     }
 
+    @WebMethod
+    public String checkStatus(int creator_id, int subscriber_id) {
+        return subscriptionRepositoryImpl.checkStatus(creator_id, subscriber_id);
+    }
     // @WebMethod
     // private String get_client_ip() {
     //     System.out.println("1");
