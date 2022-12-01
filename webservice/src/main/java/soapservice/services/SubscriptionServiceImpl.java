@@ -30,4 +30,13 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public Subscription addSubscription(int creator_id, int subscriber_id, String status) {
         return subscriptionRepositoryImpl.addSubscription(creator_id, subscriber_id, status);
     }
+
+    @WebMethod
+    public String checkStatus(int creator_id, int subscriber_id) {
+        if (subscriptionRepositoryImpl.getStatus(creator_id, subscriber_id) == "ACCEPTED") {
+            return "Status Valid";
+        } else {
+            return "status Invalid";
+        }
+    }
 }

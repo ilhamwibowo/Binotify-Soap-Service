@@ -17,4 +17,7 @@ public interface SubscriptionService {
 
     @WebMethod
     Subscription addSubscription(int creator_id, int subscriber_id, String status);
+    
+    @WebMethod
+    String checkStatus(int creator_id, int subscriber_id);
 }

@@ -15,4 +15,6 @@ public interface SubscriptionRepository {
     boolean deleteSubscription(int creator_id, int subscriber_id);
 
     Subscription addSubscription(int creator_id, int subscriber_id, String status);
+
+    String checkStatus(int creator_id, int subscriber_id);
 }
