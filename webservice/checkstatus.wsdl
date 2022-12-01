@@ -4,11 +4,11 @@
 <xsd:import namespace="http://services.soapservice/" schemaLocation="http://localhost:9999/webservice/status?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="CheckStatus">
-<part name="parameters" element="tns:CheckStatus"/>
+<message name="CheckStatusDB">
+<part name="parameters" element="tns:CheckStatusDB"/>
 </message>
-<message name="CheckStatusResponse">
-<part name="parameters" element="tns:CheckStatusResponse"/>
+<message name="CheckStatusDBResponse">
+<part name="parameters" element="tns:CheckStatusDBResponse"/>
 </message>
 <message name="HelloWorld">
 <part name="parameters" element="tns:HelloWorld"/>
@@ -17,9 +17,9 @@
 <part name="parameters" element="tns:HelloWorldResponse"/>
 </message>
 <portType name="CheckStatus">
-<operation name="CheckStatus">
-<input wsam:Action="http://services.soapservice/CheckStatus/CheckStatusRequest" message="tns:CheckStatus"/>
-<output wsam:Action="http://services.soapservice/CheckStatus/CheckStatusResponse" message="tns:CheckStatusResponse"/>
+<operation name="CheckStatusDB">
+<input wsam:Action="http://services.soapservice/CheckStatus/CheckStatusDBRequest" message="tns:CheckStatusDB"/>
+<output wsam:Action="http://services.soapservice/CheckStatus/CheckStatusDBResponse" message="tns:CheckStatusDBResponse"/>
 </operation>
 <operation name="HelloWorld">
 <input wsam:Action="http://services.soapservice/CheckStatus/HelloWorldRequest" message="tns:HelloWorld"/>
@@ -28,7 +28,7 @@
 </portType>
 <binding name="CheckStatusImplPortBinding" type="tns:CheckStatus">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="CheckStatus">
+<operation name="CheckStatusDB">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

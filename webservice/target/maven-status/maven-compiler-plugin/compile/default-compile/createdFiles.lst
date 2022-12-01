@@ -1,6 +1,10 @@
+soapservice\services\SubscriptionService.class
+soapservice\configs\DBHandler.class
 soapservice\services\CheckStatusImpl.class
-soapservice\services\Security.class
-soapservice\services\App.class
-soapservice\services\DBHandler.class
+soapservice\entities\Subscription.class
 soapservice\services\SOAPPublisher.class
 soapservice\services\CheckStatus.class
+soapservice\App.class
+soapservice\services\SubscriptionServiceImpl.class
+soapservice\services\Security.class
+soapservice\repositories\SubscriptionRepository.class

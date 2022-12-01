@@ -99,7 +99,7 @@
             <archive>
               <manifest>
                 <addClasspath>true</addClasspath>
-                <mainClass>soapservice.services.App</mainClass>
+                <mainClass>soapservice.App</mainClass>
               </manifest>
             </archive>
           </configuration>
@@ -110,7 +110,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>soapservice.services.App</mainClass>
+                <mainClass>soapservice.App</mainClass>
               </manifest>
             </archive>
             <descriptorRefs>

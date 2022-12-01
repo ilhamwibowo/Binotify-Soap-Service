@@ -16,7 +16,7 @@ import javax.jws.soap.SOAPBinding.Style;
 
 public interface CheckStatus {
     @WebMethod
-    public String CheckStatus();
+    public String CheckStatusDB();
     public String HelloWorld(String name);
 }
 

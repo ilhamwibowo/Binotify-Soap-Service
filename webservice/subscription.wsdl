@@ -1,0 +1,93 @@
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.soapservice/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://services.soapservice/" name="SubscriptionServiceImplService">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://services.soapservice/" schemaLocation="http://localhost:9999/webservice/subscription?xsd=1"/>
+</xsd:schema>
+</types>
+<message name="getSubscription">
+<part name="parameters" element="tns:getSubscription"/>
+</message>
+<message name="getSubscriptionResponse">
+<part name="parameters" element="tns:getSubscriptionResponse"/>
+</message>
+<message name="updateSubscription">
+<part name="parameters" element="tns:updateSubscription"/>
+</message>
+<message name="updateSubscriptionResponse">
+<part name="parameters" element="tns:updateSubscriptionResponse"/>
+</message>
+<message name="deleteSubscription">
+<part name="parameters" element="tns:deleteSubscription"/>
+</message>
+<message name="deleteSubscriptionResponse">
+<part name="parameters" element="tns:deleteSubscriptionResponse"/>
+</message>
+<message name="addSubscription">
+<part name="parameters" element="tns:addSubscription"/>
+</message>
+<message name="addSubscriptionResponse">
+<part name="parameters" element="tns:addSubscriptionResponse"/>
+</message>
+<portType name="SubscriptionService">
+<operation name="getSubscription">
+<input wsam:Action="http://services.soapservice/SubscriptionService/getSubscriptionRequest" message="tns:getSubscription"/>
+<output wsam:Action="http://services.soapservice/SubscriptionService/getSubscriptionResponse" message="tns:getSubscriptionResponse"/>
+</operation>
+<operation name="updateSubscription">
+<input wsam:Action="http://services.soapservice/SubscriptionService/updateSubscriptionRequest" message="tns:updateSubscription"/>
+<output wsam:Action="http://services.soapservice/SubscriptionService/updateSubscriptionResponse" message="tns:updateSubscriptionResponse"/>
+</operation>
+<operation name="deleteSubscription">
+<input wsam:Action="http://services.soapservice/SubscriptionService/deleteSubscriptionRequest" message="tns:deleteSubscription"/>
+<output wsam:Action="http://services.soapservice/SubscriptionService/deleteSubscriptionResponse" message="tns:deleteSubscriptionResponse"/>
+</operation>
+<operation name="addSubscription">
+<input wsam:Action="http://services.soapservice/SubscriptionService/addSubscriptionRequest" message="tns:addSubscription"/>
+<output wsam:Action="http://services.soapservice/SubscriptionService/addSubscriptionResponse" message="tns:addSubscriptionResponse"/>
+</operation>
+</portType>
+<binding name="SubscriptionServiceImplPortBinding" type="tns:SubscriptionService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getSubscription">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateSubscription">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteSubscription">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addSubscription">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+</binding>
+<service name="SubscriptionServiceImplService">
+<port name="SubscriptionServiceImplPort" binding="tns:SubscriptionServiceImplPortBinding">
+<soap:address location="http://localhost:9999/webservice/subscription"/>
+</port>
+</service>
+</definitions>
