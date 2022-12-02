@@ -28,7 +28,7 @@ Server bisa diakses pada `localhost:9999`
 
 ## Database Schema
 
-![Db Schema](images\skema.png?raw=true "skema basis data")
+![Db Schema](./images/skema.png?raw=true "skema basis data")
 
 ## Task assignments
 
