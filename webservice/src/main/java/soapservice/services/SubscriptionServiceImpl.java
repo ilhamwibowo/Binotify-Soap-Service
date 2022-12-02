@@ -1,10 +1,6 @@
 package soapservice.services;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.handler.MessageContext;
-import javax.xml.ws.spi.http.HttpExchange;
-import javax.servlet.http.*;
-import com.sun.xml.ws.developer.JAXWSProperties;
 
 import soapservice.entities.Log;
 import soapservice.entities.Subscription;
