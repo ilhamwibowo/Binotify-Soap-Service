@@ -14,6 +14,7 @@ Web service dengan protokol REST yang diimplementasikan menggunakan NodeJS. Seba
 ## Requirements
 
 - java jdk
+- maven
 - Docker (Optional)
 
 ## Running the server
