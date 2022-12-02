@@ -37,28 +37,29 @@ public class SubscriptionRepository {
         }
     }
 
-    public Subscription getSubscription(int creator_id, int subscriber_id) {
-        String query = "SELECT * FROM subscription WHERE creator_id = ? AND subscriber_id = ?";
+    public List<Subscription> getSubscriptionBySubscriber(int subscriber_id) {
+        String query = "SELECT * FROM subscription WHERE subscriber_id = ? AND status = 'ACCEPTED'";
 
         DBHandler database = new DBHandler();
 
         try (Connection conn = database.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, creator_id);
-            stmt.setInt(2, creator_id);
+            stmt.setInt(1, subscriber_id);
 
             ResultSet result = stmt.executeQuery();
-            Subscription subscription = null;
+            List<Subscription> subs = new ArrayList<>();
 
-            if (result.next()) {
-                subscription = new Subscription();
+            while (result.next()) {
+                Subscription subscription = new Subscription();
 
                 subscription.setCreator_id(result.getInt("creator_id"));
                 subscription.setSubscriber_id(result.getInt("Subscriber_id"));
                 subscription.setStatus(result.getString("status"));
+
+                subs.add(subscription);
             }
 
-            return subscription;
+            return subs;
 
         } catch (SQLException e) {
             throw new RuntimeException("Subscription Get error", e);
@@ -84,7 +85,7 @@ public class SubscriptionRepository {
     }
 
     public boolean addSubscription(Subscription subscription) {
-        String query = "INSERT INTO subscription(creator_id, subscriber_id) VALUES (?, ?, ?)";
+        String query = "INSERT INTO subscription(creator_id, subscriber_id) VALUES (?, ?)";
 
         DBHandler database = new DBHandler();
 
@@ -93,11 +94,11 @@ public class SubscriptionRepository {
 
             stmt.setInt(1, subscription.getCreator_id());
             stmt.setInt(2, subscription.getSubscriber_id());
-            stmt.setString(3, subscription.getStatus());
 
             stmt.execute();
 
         } catch (SQLException e) {
+            System.out.println(query);
             return false;
         }
         return true;
@@ -148,7 +149,7 @@ public class SubscriptionRepository {
             ResultSet result = stmt.executeQuery();
             List<Subscription> subs = new ArrayList<>();
 
-            if (result.next()) {
+            while (result.next()) {
                 Subscription sub = new Subscription();
 
                 sub.setCreator_id(result.getInt("creator_id"));

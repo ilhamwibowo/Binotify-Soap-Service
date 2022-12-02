@@ -33,11 +33,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @WebMethod
-    public Subscription getSubscription(int creator_id, int subscriber_id) {
-        long currenttime = System.currentTimeMillis();
-        String desc = "Mengambil data subscription creator_id : " + creator_id + ", subscriber id : " +subscriber_id ;
-        add_log(desc, "http://localhost:3000/9999/subscription", currenttime);
-        return subscriptionRepositoryImpl.getSubscription(creator_id, subscriber_id);
+    public List<Subscription> getSubscriptionBySubscriber(int subscriber_id) {
+        return subscriptionRepositoryImpl.getSubscriptionBySubscriber(subscriber_id);
     }
     
     @WebMethod

@@ -12,7 +12,7 @@ public interface SubscriptionService {
     List<Subscription> getAllSubscription();
 
     @WebMethod
-    Subscription getSubscription(int creator_id, int subscriber_id);
+    List<Subscription> getSubscriptionBySubscriber(int subscriber_id);
     
     @WebMethod
     String updateSubscription(int creator_id, int subscriber_id, String status);
