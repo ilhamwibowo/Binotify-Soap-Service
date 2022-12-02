@@ -37,28 +37,29 @@ public class SubscriptionRepository {
         }
     }
 
-    public Subscription getSubscription(int creator_id, int subscriber_id) {
-        String query = "SELECT * FROM subscription WHERE creator_id = ? AND subscriber_id = ?";
+    public List<Subscription> getSubscriptionBySubscriber(int subscriber_id) {
+        String query = "SELECT * FROM subscription WHERE subscriber_id = ? AND status = 'ACCEPTED'";
 
         DBHandler database = new DBHandler();
 
         try (Connection conn = database.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, creator_id);
-            stmt.setInt(2, creator_id);
+            stmt.setInt(1, subscriber_id);
 
             ResultSet result = stmt.executeQuery();
-            Subscription subscription = null;
+            List<Subscription> subs = new ArrayList<>();
 
-            if (result.next()) {
-                subscription = new Subscription();
+            while (result.next()) {
+                Subscription subscription = new Subscription();
 
                 subscription.setCreator_id(result.getInt("creator_id"));
                 subscription.setSubscriber_id(result.getInt("Subscriber_id"));
                 subscription.setStatus(result.getString("status"));
+
+                subs.add(subscription);
             }
 
-            return subscription;
+            return subs;
 
         } catch (SQLException e) {
             throw new RuntimeException("Subscription Get error", e);

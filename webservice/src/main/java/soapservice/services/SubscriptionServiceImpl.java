@@ -34,8 +34,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @WebMethod
-    public Subscription getSubscription(int creator_id, int subscriber_id) {
-        return subscriptionRepositoryImpl.getSubscription(creator_id, subscriber_id);
+    public List<Subscription> getSubscriptionBySubscriber(int subscriber_id) {
+        return subscriptionRepositoryImpl.getSubscriptionBySubscriber(subscriber_id);
     }
     
     @WebMethod
