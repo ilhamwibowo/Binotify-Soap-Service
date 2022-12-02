@@ -84,7 +84,7 @@ public class SubscriptionRepository {
     }
 
     public boolean addSubscription(Subscription subscription) {
-        String query = "INSERT INTO subscription(creator_id, subscriber_id) VALUES (?, ?, ?)";
+        String query = "INSERT INTO subscription(creator_id, subscriber_id) VALUES (?, ?)";
 
         DBHandler database = new DBHandler();
 
@@ -93,11 +93,11 @@ public class SubscriptionRepository {
 
             stmt.setInt(1, subscription.getCreator_id());
             stmt.setInt(2, subscription.getSubscriber_id());
-            stmt.setString(3, subscription.getStatus());
 
             stmt.execute();
 
         } catch (SQLException e) {
+            System.out.println(query);
             return false;
         }
         return true;
@@ -148,7 +148,7 @@ public class SubscriptionRepository {
             ResultSet result = stmt.executeQuery();
             List<Subscription> subs = new ArrayList<>();
 
-            if (result.next()) {
+            while (result.next()) {
                 Subscription sub = new Subscription();
 
                 sub.setCreator_id(result.getInt("creator_id"));
